@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekber Nusantara - Rekening Bersama Terpercaya</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .serif-title { font-family: 'Playfair Display', serif; }
+        .bg-teal-premium { background-color: #0b4d4a; }
+        .text-teal-premium { color: #0b4d4a; }
+        .border-teal-premium { border-color: #0b4d4a; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <nav class="bg-white/90 backdrop-blur sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="bg-teal-premium text-white p-2 rounded-lg">
+                        <i class="fa-solid fa-handshake text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold text-teal-premium tracking-tight" id="nav-logo">Rekber Nusantara</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleLanguage()" id="lang-btn" class="px-3 py-1 text-sm font-semibold border border-gray-300 rounded-md hover:bg-gray-50 transition">EN</button>
+                    <a href="#simulator" id="nav-cta" class="bg-teal-premium text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-teal-900 transition">Coba Simulator</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative bg-gradient-to-b from-teal-50/50 to-white pt-16 pb-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-teal-50 border border-teal-100 px-3 py-1 rounded-full text-xs font-semibold text-teal-700 mb-6 shadow-sm">
+                        <i class="fa-solid fa-shield-halved"></i> <span id="badge-text">Rekening Bersama Independen No. 1 di Indonesia</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-semibold text-gray-900 tracking-tight leading-tight mb-6">
+                        <span id="hero-title-1">Transaksi Online Aman,</span><br>
+                        <span class="serif-title text-teal-premium italic font-normal" id="hero-title-2">Tanpa Rasa Khawatir.</span>
+                    </h1>
+                    <p class="text-base sm:text-lg text-gray-600 mb-8" id="hero-desc">
+                        Bertransaksi dengan siapa saja di seluruh Nusantara. Dana Anda aman bersama kami hingga barang diterima sesuai pesanan. Melindungi pembeli, menjamin hak penjual.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 sm:justify-center lg:justify-start">
+                        <a href="#whatsapp-trigger" onclick="openWA()" class="bg-teal-premium text-white px-6 py-3 rounded-xl font-medium text-center shadow-lg hover:bg-teal-900 transition flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> <span id="hero-btn-1">Mulai Transaksi Aman</span>
+                        </a>
+                        <a href="#simulator" class="bg-white text-gray-700 border border-gray-300 px-6 py-3 rounded-xl font-medium text-center hover:bg-gray-50 transition" id="hero-btn-2">
+                            Coba Simulator
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 flex justify-center">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 w-full max-w-sm">
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                            <div>
+                                <p class="text-xs text-gray-400" id="mock-id">Transaksi #RN-9921</p>
+                                <p class="text-sm font-bold text-gray-800" id="mock-store">AndiStore (Penjual)</p>
+                            </div>
+                            <span class="bg-amber-50 text-amber-700 text-xs px-2.5 py-1 rounded-full font-medium border border-amber-100 animate-pulse" id="mock-status">Menunggu Konfirmasi</span>
+                        </div>
+                        <div class="py-6 text-center">
+                            <p class="text-xs text-gray-400 mb-1" id="mock-total-lbl">Total Pembayaran (Aman di Rekber)</p>
+                            <p class="text-3xl font-extrabold text-teal-premium">Rp 4.500.000</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex gap-3 items-start">
+                                <div class="bg-teal-100 text-teal-700 p-1.5 rounded-full mt-0.5"><i class="fa-solid fa-check text-xs"></i></div>
+                                <div>
+                                    <p class="text-xs font-bold text-gray-700" id="step-1-title">Dana Masuk</p>
+                                    <p class="text-xs text-gray-400" id="step-1-desc">Pembeli telah mentransfer dana ke Rekber.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 items-start opacity-50">
+                                <div class="bg-gray-100 text-gray-400 p-1.5 rounded-full mt-0.5"><i class="fa-solid fa-truck text-xs"></i></div>
+                                <div>
+                                    <p class="text-xs font-bold text-gray-700" id="step-2-title">Pengiriman</p>
+                                    <p class="text-xs text-gray-400" id="step-2-desc">Menunggu penjual mengirimkan pesanan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="simulator" class="py-16 bg-white border-y border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900 tracking-tight" id="calc-title">Kalkulator & Simulator Rekber</h2>
+                <p class="text-gray-500 mt-2" id="calc-desc">Hitung transparansi biaya jasa dan simulasikan keamanannya secara langsung.</p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm">
+                <label class="block text-sm font-semibold text-gray-700 mb-2" id="lbl-nominal">Masukkan Nominal Transaksi (Rp)</label>
+                <div class="relative rounded-xl shadow-sm mb-6">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <span class="text-gray-400 font-medium">Rp</span>
+                    </div>
+                    <input type="number" id="input-nominal" value="1000000" oninput="hitungRekber()" class="block w-full pl-12 pr-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-lg font-bold text-gray-800">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-white p-4 rounded-xl border border-gray-100">
+                        <p class="text-xs text-gray-400 font-medium mb-1" id="lbl-fee">Biaya Jasa Rekber</p>
+                        <p class="text-xl font-bold text-amber-600" id="res-fee">Rp 10.000</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-gray-100">
+                        <p class="text-xs text-gray-400 font-medium mb-1" id="lbl-receive">Penjual Menerima Bersih</p>
+                        <p class="text-xl font-bold text-teal-premium" id="res-receive">Rp 990.000</p>
+                    </div>
+                </div>
+
+                <button onclick="jalankanSimulasi()" class="w-full bg-teal-premium text-white py-3 rounded-xl font-semibold hover:bg-teal-900 transition flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-solid fa-play"></i> <span id="btn-simulasi">Mulai Simulasi Alur Kerja</span>
+                </button>
+            </div>
+
+            <div id="simulation-box" class="mt-6 hidden bg-teal-50 border border-teal-200 rounded-2xl p-6 transition-all duration-300">
+                <h4 class="text-sm font-bold text-teal-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-circle-info"></i> <span id="sim-status-title">Status Alur Transaksi Terbuka</span></h4>
+                <ul class="space-y-3 text-xs text-teal-800 font-medium">
+                    <li id="sim-step-1" class="flex gap-2"><i class="fa-solid fa-circle-dot mt-0.5"></i> Pembeli transfer nominal + biaya jasa ke Rekber Nusantara. Dana masuk kolam aman.</li>
+                    <li id="sim-step-2" class="flex gap-2 opacity-40"><i class="fa-solid fa-circle-dot mt-0.5"></i> Rekber memberi lampu hijau ke Penjual untuk kirim produk.</li>
+                    <li id="sim-step-3" class="flex gap-2 opacity-40"><i class="fa-solid fa-circle-dot mt-0.5"></i> Pembeli menerima & mengonfirmasi kesesuaian produk.</li>
+                    <li id="sim-step-4" class="flex gap-2 opacity-40"><i class="fa-solid fa-circle-dot mt-0.5"></i> Dana bersih langsung dicairkan penuh ke rekening Penjual. Selesai!</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-md mx-auto px-4 sm:px-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-2" id="form-title">Hubungi Kami / Pengajuan Kerja Sama</h3>
+                <p class="text-xs text-gray-500 mb-6" id="form-desc">Ada pertanyaan besar mengenai integrasi bisnis? Kirim pesan langsung ke tim admin kami.</p>
+                <form onsubmit="submitForm(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1" id="lbl-name">Nama Lengkap</label>
+                        <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-teal-600 focus:border-teal-600 bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Email</label>
+                        <input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-teal-600 focus:border-teal-600 bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1" id="lbl-msg">Pesan Anda</label>
+                        <textarea rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-teal-600 focus:border-teal-600 bg-white"></textarea>
+                    </div>
+                    <button type="submit" id="btn-submit-form" class="w-full bg-teal-premium text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-teal-900 transition">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center text-xs border-t border-gray-800">
+        <p>&copy; 2026 Rekber Nusantara. All Rights Reserved. Independent Secure Escrow Platform.</p>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="openWA()" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 relative group">
+            <i class="fa-brands fa-whatsapp text-3xl"></i>
+            <span class="absolute right-14 bg-gray-900 text-white text-xs px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Chat Admin CS</span>
+        </button>
+    </div>
+
+    <script>
+        let currentLang = 'id';
+        const waNumber = '6280012345678'; // Ubah nomor WhatsApp Anda di sini nanti
+
+        const dictionary = {
+            id: {
+                logo: "Rekber Nusantara", cta: "Coba Simulator",
+                badge: "Rekening Bersama Independen No. 1 di Indonesia",
+                t1: "Transaksi Online Aman,", t2: "Tanpa Rasa Khawatir.",
+                desc: "Bertransaksi dengan siapa saja di seluruh Nusantara. Dana Anda aman bersama kami hingga barang diterima sesuai pesanan. Melindungi pembeli, menjamin hak penjual.",
+                b1: "Mulai Transaksi Aman", b2: "Coba Simulator",
+                mId: "Transaksi #RN-9921", mStore: "AndiStore (Penjual)", mStatus: "Menunggu Konfirmasi", mTotal: "Total Pembayaran (Aman di Rekber)",
+                s1t: "Dana Masuk", s1d: "Pembeli telah mentransfer dana ke Rekber.",
+                s2t: "Pengiriman", s2d: "Menunggu penjual mengirimkan pesanan.",
+                cTitle: "Kalkulator & Simulator Rekber", cDesc: "Hitung transparansi biaya jasa dan simulasikan keamanannya secara langsung.",
+                lNominal: "Masukkan Nominal Transaksi (Rp)", lFee: "Biaya Jasa Rekber", lReceive: "Penjual Menerima Bersih", bSim: "Mulai Simulasi Alur Kerja",
+                fTitle: "Hubungi Kami / Pengajuan Kerja Sama", fDesc: "Ada pertanyaan besar mengenai integrasi bisnis? Kirim pesan langsung ke tim admin kami.",
+                lName: "Nama Lengkap", lMsg: "Pesan Anda", bSub: "Kirim Pesan",
+                stepTitle: "Status Alur Transaksi Terbuka",
+                st1: "Pembeli transfer nominal + biaya jasa ke Rekber Nusantara. Dana masuk kolam aman.",
+                st2: "Rekber memberi lampu hijau ke Penjual untuk kirim produk.",
+                st3: "Pembeli menerima & mengonfirmasi kesesuaian produk.",
+                st4: "Dana bersih langsung dicairkan penuh ke rekening Penjual. Selesai!"
+            },
+            en: {
+                logo: "Nusantara Escrow", cta: "Try Simulator",
+                badge: "No. 1 Independent Escrow Platform in Indonesia",
+                t1: "Secure Online Transactions,", t2: "Zero Worries.",
+                desc: "Transact safely with anyone across the archipelago. Your funds are secured in escrow until the product is safely delivered. Protecting buyers, guaranteeing sellers.",
+                b1: "Start Secure Transaction", b2: "Try Simulator",
+                mId: "Transaction #RN-9921", mStore: "AndiStore (Seller)", mStatus: "Awaiting Confirmation", mTotal: "Total Payment (Secured in Escrow)",
+                s1t: "Funds Deposited", s1d: "Buyer has successfully secured funds into Escrow.",
+                s2t: "Shipping", s2d: "Awaiting seller to dispatch the order.",
+                cTitle: "Escrow Calculator & Simulator", cDesc: "Calculate transparent service fees and simulate the safety workflow instantly.",
+                lNominal: "Enter Transaction Amount (Rp)", lFee: "Escrow Service Fee", lReceive: "Seller Receives (Net)", bSim: "Start Workflow Simulation",
+                fTitle: "Contact Us / Partnership Inquiry", fDesc: "Have inquiries regarding business integration? Message our core administrators.",
+                lName: "Full Name", lMsg: "Your Message", bSub: "Send Message",
+                stepTitle: "Escrow Transaction Workflow Active",
+                st1: "Buyer deposits the payment + service fee into the escrow. Funds are completely safe.",
+                st2: "Escrow system signals the Seller to safely dispatch the item.",
+                st3: "Buyer receives the product and verifies its absolute compliance.",
+                st4: "Net funds are automatically released straight to the Seller's bank. Done!"
+            }
+        };
+
+        function hitungRekber() {
+            const nominal = parseFloat(document.getElementById('input-nominal').value) || 0;
+            let fee = 10000; // Biaya flat contoh Rp 10.000
+            if (nominal > 5000000) fee = 25000;
+            if (nominal > 10000000) fee = 50000;
+            
+            const receive = nominal - fee > 0 ? nominal - fee : 0;
+            
+            document.getElementById('res-fee').innerText = "Rp " + fee.toLocaleString('id-ID');
+            document.getElementById('res-receive').innerText = "Rp " + receive.toLocaleString('id-ID');
+        }
+
+        let simInterval;
+        function jalankanSimulasi() {
+            const box = document.getElementById('simulation-box');
+            box.classList.remove('hidden');
+            
+            const steps = ['sim-step-1', 'sim-step-2', 'sim-step-3', 'sim-step-4'];
+            steps.forEach(id => document.getElementById(id).classList.add('opacity-40'));
+            
+            let currentStep = 0;
+            document.getElementById(steps[0]).classList.remove('opacity-40');
+            
+            clearInterval(simInterval);
+            simInterval = setInterval(() => {
+                currentStep++;
+                if (currentStep < steps.length) {
+                    document.getElementById(steps[currentStep]).classList.remove('opacity-40');
+                } else {
+                    clearInterval(simInterval);
+                    alert(currentLang === 'id' ? "Simulasi Sukses! Alur dana berjalan 100% aman." : "Simulation Complete! Escrow workflow secured successfully.");
+                }
+            }, 2000);
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            document.getElementById('lang-btn').innerText = currentLang === 'id' ? 'EN' : 'ID';
+            
+            const d = dictionary[currentLang];
+            document.getElementById('nav-logo').innerText = d.logo;
+            document.getElementById('nav-cta').innerText = d.cta;
+            document.getElementById('badge-text').innerText = d.badge;
+            document.getElementById('hero-title-1').innerText = d.t1;
+            document.getElementById('hero-title-2').innerText = d.t2;
+            document.getElementById('hero-desc').innerText = d.desc;
+            document.getElementById('hero-btn-1').innerHTML = `<i class="fa-brands fa-whatsapp text-lg"></i> ` + d.b1;
+            document.getElementById('hero-btn-2').innerText = d.b2;
+            document.getElementById('mock-id').innerText = d.mId;
+            document.getElementById('mock-store').innerText = d.mStore;
+            document.getElementById('mock-status').innerText = d.mStatus;
+            document.getElementById('mock-total-lbl').innerText = d.mTotal;
+            document.getElementById('step-1-title').innerText = d.s1t;
+            document.getElementById('step-1-desc').innerText = d.s1d;
+            document.getElementById('step-2-title').innerText = d.s2t;
+            document.getElementById('step-2-desc').innerText = d.s2d;
+            document.getElementById('calc-title').innerText = d.cTitle;
+            document.getElementById('calc-desc').innerText = d.cDesc;
+            document.getElementById('lbl-nominal').innerText = d.lNominal;
+            document.getElementById('lbl-fee').innerText = d.lFee;
+            document.getElementById('lbl-receive').innerText = d.lReceive;
+            document.getElementById('btn-simulasi').innerText = d.bSim;
+            document.getElementById('form-title').innerText = d.fTitle;
+            document.getElementById('form-desc').innerText = d.fDesc;
+            document.getElementById('lbl-name').innerText = d.lName;
+            document.getElementById('lbl-msg').innerText = d.lMsg;
+            document.getElementById('btn-submit-form').innerText = d.bSub;
+            document.getElementById('sim-status-title').innerText = d.stepTitle;
+            document.getElementById('sim-step-1').innerHTML = `<i class="fa-solid fa-circle-dot mt-0.5"></i> ` + d.st1;
+            document.getElementById('sim-step-2').innerHTML = `<i class="fa-solid fa-circle-dot mt-0.5"></i> ` + d.st2;
+            document.getElementById('sim-step-3').innerHTML = `<i class="fa-solid fa-circle-dot mt-0.5"></i> ` + d.st3;
+            document.getElementById('sim-step-4').innerHTML = `<i class="fa-solid fa-circle-dot mt-0.5"></i> ` + d.st4;
+        }
+
+        function openWA() {
+            window.open(`https://wa.me/${waNumber}?text=Halo%20Admin%20Rekber%20Nusantara,%20saya%20ingin%20memulai%20transaksi%20baru.`, '_blank');
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            alert(currentLang === 'id' ? "Pesan berhasil terkirim! Tim admin akan segera menghubungi Anda melalui email." : "Message submitted successfully! Our administrative team will reach out via email shortly.");
+            e.target.reset();
+        }
+        
+        // Init run
+        hitungRekber();
+    </script>
+</body>
+</html>
