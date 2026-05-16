@@ -304,5 +304,37 @@
         // Init run
         hitungRekber();
     </script>
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<script>
+  // Inisialisasi awal menyambungkan web ke Pi Browser
+  Pi.init({ version: "2.0", sandbox: true });
+
+  // Fungsi otomatis ketika tombol "Mulai Transaksi Aman" diketuk
+  async function bayarPakaiPi(jumlahKoin, namaPenjual) {
+    try {
+      const payment = await Pi.createPayment({
+        amount: jumlahKoin,
+        memo: "Biaya Rekber Nusantara untuk transaksi dengan " + namaPenjual,
+        metadata: { penjual: namaPenjual },
+        uid: "rekber-" + Date.now()
+      }, {
+        onReadyForServerApproval: function(paymentId) {
+          console.log("Dana dikunci di Blockchain Pi. Menunggu verifikasi AI...");
+        },
+        onReadyForServerCompletion: function(paymentId, txid) {
+          alert("Transaksi Sukses! Dana Pi berhasil dialihkan.");
+        },
+        onCancel: function(paymentId) {
+          alert("Transaksi dibatalkan oleh pengguna.");
+        },
+        onError: function(error, paymentId) {
+          alert("Waduh, ada gangguan jaringan Pi: " + error.message);
+        }
+      });
+    } catch (err) {
+      alert("Gagal memicu dompet Pi: " + err.message);
+    }
+  }
+</script>  
 </body>
 </html>
